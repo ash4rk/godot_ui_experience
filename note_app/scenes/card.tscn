@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cu64r0i3h4wp4"]
+
+[ext_resource type="Theme" uid="uid://dq7rs7x41380r" path="res://main_theme.tres" id="1_xk3xd"]
+[ext_resource type="Script" path="res://scenes/card.gd" id="1_ytbx7"]
+[ext_resource type="FontFile" uid="uid://b46o6a82pckne" path="res://fonts/ComicNeue-Bold.ttf" id="2_43rkc"]
+[ext_resource type="FontFile" uid="uid://dktjy0vnlqres" path="res://fonts/ComicNeue-Regular.ttf" id="3_s5otj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5de56"]
+resource_local_to_scene = true
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.960784, 0.717647, 0.694118, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Card" type="PanelContainer"]
+custom_minimum_size = Vector2(220, 0)
+mouse_default_cursor_shape = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5de56")
+script = ExtResource("1_ytbx7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xk3xd")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_43rkc")
+theme_override_font_sizes/font_size = 16
+text = "How to make your personal brand stand out online"
+autowrap_mode = 3
+
+[node name="Date" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xk3xd")
+theme_override_colors/font_color = Color(0.203922, 0.203922, 0.203922, 1)
+theme_override_fonts/font = ExtResource("3_s5otj")
+theme_override_font_sizes/font_size = 16
+text = "May 21, 2023"
+autowrap_mode = 3
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

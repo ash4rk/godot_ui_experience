@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2v867nje32v7"]
+
+[ext_resource type="Script" path="res://scenes/Pages.gd" id="1_qnuft"]
+[ext_resource type="PackedScene" uid="uid://bdo3c05cilaf2" path="res://scenes/home.tscn" id="1_scala"]
+[ext_resource type="PackedScene" uid="uid://deqiitjxnc6c7" path="res://scenes/new_note.tscn" id="2_a7t10"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14902, 0.14902, 0.14902, 1)
+
+[node name="Pages" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qnuft")
+HomePath = NodePath("Home")
+NewNotePath = NodePath("NewNote")
+
+[node name="Home" parent="Pages" instance=ExtResource("1_scala")]
+visible = false
+layout_mode = 1
+
+[node name="NewNote" parent="Pages" instance=ExtResource("2_a7t10")]
+layout_mode = 1

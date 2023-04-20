@@ -1,0 +1,74 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dq7rs7x41380r"]
+
+[ext_resource type="FontFile" uid="uid://b46o6a82pckne" path="res://fonts/ComicNeue-Bold.ttf" id="1_581tf"]
+[ext_resource type="FontFile" uid="uid://dktjy0vnlqres" path="res://fonts/ComicNeue-Regular.ttf" id="2_7qs7g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fjmpy"]
+content_margin_left = 15.0
+content_margin_top = 8.0
+content_margin_right = 15.0
+content_margin_bottom = 8.0
+bg_color = Color(0.152941, 0.152941, 0.152941, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81sgw"]
+content_margin_left = 15.0
+content_margin_top = 8.0
+content_margin_right = 15.0
+content_margin_bottom = 8.0
+bg_color = Color(0.172549, 0.172549, 0.172549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wr5fu"]
+content_margin_left = 15.0
+content_margin_top = 8.0
+content_margin_right = 15.0
+content_margin_bottom = 8.0
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_52yhe"]
+content_margin_left = 15.0
+content_margin_top = 8.0
+content_margin_right = 15.0
+content_margin_bottom = 8.0
+bg_color = Color(0.172549, 0.172549, 0.172549, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_om0qw"]
+content_margin_left = 15.0
+content_margin_top = 8.0
+content_margin_right = 15.0
+content_margin_bottom = 8.0
+bg_color = Color(0.321569, 0.321569, 0.321569, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[resource]
+default_font = ExtResource("2_7qs7g")
+default_font_size = 24
+Button/colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/colors/icon_hover_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/colors/icon_normal_color = Color(0.87451, 0.87451, 0.87451, 1)
+Button/constants/h_separation = 12
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("1_581tf")
+Button/styles/disabled = SubResource("StyleBoxFlat_fjmpy")
+Button/styles/focus = SubResource("StyleBoxFlat_81sgw")
+Button/styles/hover = SubResource("StyleBoxFlat_wr5fu")
+Button/styles/normal = SubResource("StyleBoxFlat_52yhe")
+Button/styles/pressed = SubResource("StyleBoxFlat_om0qw")

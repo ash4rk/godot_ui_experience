@@ -1,0 +1,189 @@
+[gd_scene load_steps=14 format=3 uid="uid://bdo3c05cilaf2"]
+
+[ext_resource type="Script" path="res://scenes/home.gd" id="1_labfi"]
+[ext_resource type="Theme" uid="uid://dq7rs7x41380r" path="res://main_theme.tres" id="1_lldtg"]
+[ext_resource type="FontFile" uid="uid://cwrkr4ud3dicj" path="res://fonts/ComicNeue-Light.ttf" id="2_lo3ju"]
+[ext_resource type="Texture2D" uid="uid://compqqw4msfpx" path="res://icons/serch_icon.png" id="3_ujb6o"]
+[ext_resource type="PackedScene" uid="uid://cu64r0i3h4wp4" path="res://scenes/card.tscn" id="4_0hb0s"]
+[ext_resource type="FontFile" uid="uid://b46o6a82pckne" path="res://fonts/ComicNeue-Bold.ttf" id="6_7f7up"]
+[ext_resource type="Texture2D" uid="uid://bgs8tm5esv0ff" path="res://icons/plus_icon.png" id="7_2bt2c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d86ww"]
+content_margin_left = 20.0
+content_margin_top = 5.0
+content_margin_right = 20.0
+content_margin_bottom = 5.0
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_am6l8"]
+content_margin_left = 20.0
+content_margin_top = 5.0
+content_margin_right = 20.0
+content_margin_bottom = 5.0
+bg_color = Color(0.235294, 0.235294, 0.235294, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qo6gx"]
+content_margin_left = 30.0
+content_margin_top = 10.0
+content_margin_right = 30.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krgjv"]
+resource_local_to_scene = true
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.960784, 0.717647, 0.694118, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ckyht"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.164706, 0.164706, 0.164706, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.054902, 0.054902, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xsjgj"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.054902, 0.054902, 0.054902, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_labfi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 3.0
+offset_right = -13.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AppNameLabel" type="Label" parent="VBoxContainer/Header/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_lldtg")
+theme_override_font_sizes/font_size = 32
+text = "GNotes"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Header/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lo3ju")
+theme_override_styles/normal = SubResource("StyleBoxFlat_d86ww")
+theme_override_styles/focus = SubResource("StyleBoxFlat_am6l8")
+placeholder_text = "Search Notes..."
+clear_button_enabled = true
+right_icon = ExtResource("3_ujb6o")
+caret_blink = true
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qo6gx")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Card" parent="VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_0hb0s")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_krgjv")
+
+[node name="NewNoteButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -81.0
+offset_right = -41.0
+offset_bottom = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("1_lldtg")
+theme_override_colors/font_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_colors/icon_normal_color = Color(0.639216, 0.639216, 0.639216, 1)
+theme_override_constants/h_separation = 16
+theme_override_fonts/font = ExtResource("6_7f7up")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_ckyht")
+theme_override_styles/hover = SubResource("StyleBoxFlat_xsjgj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ckyht")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ckyht")
+text = "New note"
+icon = ExtResource("7_2bt2c")
+expand_icon = true
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="pressed" from="NewNoteButton" to="." method="_on_new_note_button_pressed"]
