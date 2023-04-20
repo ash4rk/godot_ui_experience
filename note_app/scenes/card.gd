@@ -6,7 +6,8 @@ func _read() -> void:
 	pass
 
 func set_up(data):
-	get_theme_stylebox("panel", "").bg_color = data.bg_color
+	print(data)
+	get_theme_stylebox("panel", "").bg_color = data.bg
 	$VBoxContainer/Title.text = data.title
 	$VBoxContainer/Date.text = data.date
 

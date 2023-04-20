@@ -44,7 +44,8 @@ func _on_save_button_pressed() -> void:
 		"title": title.text,
 		"content": content.text,
 		"bg": bg,
-		"date": "{month} {date} {year}".format({
+		"id": id,
+		"date": "{month} {date}, {year}".format({
 			"month": months[dates['month']-1],
 			"date": dates['day'],
 			"year": dates['year'],

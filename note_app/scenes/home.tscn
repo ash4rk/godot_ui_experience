@@ -37,7 +37,7 @@ content_margin_right = 30.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_krgjv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vajsp"]
 resource_local_to_scene = true
 content_margin_left = 20.0
 content_margin_top = 20.0
@@ -155,7 +155,7 @@ layout_mode = 2
 
 [node name="Card" parent="VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_0hb0s")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_krgjv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vajsp")
 
 [node name="NewNoteButton" type="Button" parent="."]
 layout_mode = 1
@@ -186,4 +186,5 @@ icon = ExtResource("7_2bt2c")
 expand_icon = true
 
 [connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="NewNoteButton" to="." method="_on_new_note_button_pressed"]

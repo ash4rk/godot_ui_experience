@@ -33,8 +33,8 @@ HomePath = NodePath("Home")
 NewNotePath = NodePath("NewNote")
 
 [node name="Home" parent="Pages" instance=ExtResource("1_scala")]
-visible = false
 layout_mode = 1
 
 [node name="NewNote" parent="Pages" instance=ExtResource("2_a7t10")]
+visible = false
 layout_mode = 1
