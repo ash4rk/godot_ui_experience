@@ -2,9 +2,18 @@ extends Control
 
 @onready var title = $VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer/TitleLineEdit
 @onready var content = $VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer/ContentTextEdit
+@onready var saveBtn = $VBoxContainer/Control/Control/SaveButton
 
 var bg = ""
 var id = ""
+
+func _process(_delta):
+	if len(title.text.strip_edges()) == 0 and not saveBtn.disabled:
+		saveBtn.disabled = true
+		saveBtn.mouse_default_cursor_shape = Control.CURSOR_FORBIDDEN
+	elif len(title.text.strip_edges()) != 0 and saveBtn.disabled:
+		saveBtn.disabled = false
+		saveBtn.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 func reset() -> void:
 	title.text = ""
