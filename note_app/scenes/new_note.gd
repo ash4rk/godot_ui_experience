@@ -6,6 +6,7 @@ extends Control
 
 var bg = ""
 var id = ""
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 func _process(_delta):
 	if len(title.text.strip_edges()) == 0 and not saveBtn.disabled:
@@ -21,6 +22,7 @@ func reset() -> void:
 	bg = Global.COLORS.CARDS[randi()%len(Global.COLORS.CARDS)]
 	title.grab_focus()
 	gen_id()
+	$Popup.visible = false
 
 func gen_id():
 	var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -30,7 +32,10 @@ func gen_id():
 		id += chars[randi()%chars.length()]
 
 func _on_back_button_pressed():
-	Global.go_back()
+	if len(title.text.strip_edges()) != 0 or len(content.text.strip_edges()) != 0:
+		$Popup.visible = true
+	else:
+		Global.go_back()
 
 func _on_save_button_pressed() -> void:
 	var unix_time: float = Time.get_unix_time_from_system()
@@ -40,7 +45,7 @@ func _on_save_button_pressed() -> void:
 		"content": content.text,
 		"bg": bg,
 		"date": "{month} {date} {year}".format({
-			"month": dates['month'],
+			"month": months[dates['month']-1],
 			"date": dates['day'],
 			"year": dates['year'],
 		})
@@ -65,3 +70,10 @@ func _on_save_button_pressed() -> void:
 	var json_string_new = JSON.stringify(data, "\t")
 	file.store_line(json_string_new)
 	file.close()
+	Global.go_back()
+
+func _on_confirmation_dialog_canceled():
+	$Popup.visible = false
+
+func _on_confirmation_dialog_confirmed():
+	Global.go_back()

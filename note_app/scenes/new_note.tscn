@@ -174,5 +174,15 @@ caret_blink = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
+[node name="Popup" type="ConfirmationDialog" parent="."]
+title = "Unsaved note"
+position = Vector2i(319, 220)
+size = Vector2i(389, 130)
+theme = ExtResource("1_kl0e6")
+dialog_text = "You have not saved the note.
+Do you want to leave without saving?"
+
 [connection signal="pressed" from="VBoxContainer/Control/Control/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/Control/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="canceled" from="Popup" to="." method="_on_confirmation_dialog_canceled"]
+[connection signal="confirmed" from="Popup" to="." method="_on_confirmation_dialog_confirmed"]

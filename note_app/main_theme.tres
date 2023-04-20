@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dq7rs7x41380r"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dq7rs7x41380r"]
 
 [ext_resource type="FontFile" uid="uid://b46o6a82pckne" path="res://fonts/ComicNeue-Bold.ttf" id="1_581tf"]
 [ext_resource type="FontFile" uid="uid://dktjy0vnlqres" path="res://fonts/ComicNeue-Regular.ttf" id="2_7qs7g"]
@@ -58,6 +58,12 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ninsg"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
 [resource]
 default_font = ExtResource("2_7qs7g")
 default_font_size = 24
@@ -72,3 +78,4 @@ Button/styles/focus = SubResource("StyleBoxFlat_81sgw")
 Button/styles/hover = SubResource("StyleBoxFlat_wr5fu")
 Button/styles/normal = SubResource("StyleBoxFlat_52yhe")
 Button/styles/pressed = SubResource("StyleBoxFlat_om0qw")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ninsg")
