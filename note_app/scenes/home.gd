@@ -4,8 +4,8 @@ var card = preload("res://scenes/card.tscn")
 @onready var hbox = $VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer
 
 func _ready() -> void:
-	create_vboxes()
-	var data = _get_data()
+	var vboxes = create_vboxes()
+	_set_up(vboxes)
 	
 
 func _get_data() -> Dictionary:
@@ -26,9 +26,9 @@ func _get_data() -> Dictionary:
 	file.close()
 	return data
 
-func _set_up(vboxes) -> void:
+func _set_up(vboxes: Array) -> void:
 	var datas = _get_data()
-	var num_of_vbox = hbox.get_child_count()
+	var num_of_vbox = vboxes.size()
 	var count = 0
 	for data in datas.values():
 		var card_item = card.instantiate()
@@ -37,7 +37,7 @@ func _set_up(vboxes) -> void:
 		vboxes[count].add_child(card_item)
 		
 		count += 1
-		if count > num_of_vbox:
+		if count >= num_of_vbox:
 			count = 0
 		
 func create_vboxes():
@@ -49,11 +49,12 @@ func create_vboxes():
 	for n in number_of_vbox:
 		var vbox = VBoxContainer.new()
 		hbox.add_child(vbox)
+		vbox.add_theme_constant_override("separation", 20)
 		vboxes.append(vbox)
 	return vboxes
 
 func _on_resized():
-	if visible:
+	if visible and hbox != null:
 		var vboxes = create_vboxes()
 		_set_up(vboxes)
 
@@ -62,6 +63,6 @@ func _on_new_note_button_pressed():
 	$"../NewNote".reset()
 
 func _on_visibility_changed():
-	if visible:
+	if visible and hbox != null:
 		var vboxes = create_vboxes()
 		_set_up(vboxes)
