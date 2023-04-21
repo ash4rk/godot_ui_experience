@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2v867nje32v7"]
+[gd_scene load_steps=5 format=3 uid="uid://c2v867nje32v7"]
 
 [ext_resource type="Script" path="res://scenes/Pages.gd" id="1_qnuft"]
 [ext_resource type="PackedScene" uid="uid://bdo3c05cilaf2" path="res://scenes/home.tscn" id="1_scala"]
 [ext_resource type="PackedScene" uid="uid://deqiitjxnc6c7" path="res://scenes/new_note.tscn" id="2_a7t10"]
+[ext_resource type="PackedScene" uid="uid://oh53ev660wjt" path="res://scenes/note.tscn" id="2_ahcnk"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -31,10 +32,15 @@ grow_vertical = 2
 script = ExtResource("1_qnuft")
 HomePath = NodePath("Home")
 NewNotePath = NodePath("NewNote")
+NotePath = NodePath("Note")
 
 [node name="Home" parent="Pages" instance=ExtResource("1_scala")]
 layout_mode = 1
 
 [node name="NewNote" parent="Pages" instance=ExtResource("2_a7t10")]
+visible = false
+layout_mode = 1
+
+[node name="Note" parent="Pages" instance=ExtResource("2_ahcnk")]
 visible = false
 layout_mode = 1

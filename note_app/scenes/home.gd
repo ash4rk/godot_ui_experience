@@ -6,28 +6,9 @@ var card = preload("res://scenes/card.tscn")
 func _ready() -> void:
 	var vboxes = create_vboxes()
 	_set_up(vboxes)
-	
-
-func _get_data() -> Dictionary:
-	var file = FileAccess.open("res://data.json", FileAccess.READ_WRITE)
-	#parse it to check for errors
-	var json = JSON.new()
-	var _parse_result = json.parse(file.get_as_text())
-	
-	var data: Dictionary
-	if json.get_data() == null:
-		data = {}
-	else:
-		data = json.get_data()
-
-	#\t makes a newline for each indent in json to be more readable
-	var json_string_new = JSON.stringify(data, "\t")
-	file.store_line(json_string_new)
-	file.close()
-	return data
 
 func _set_up(vboxes: Array) -> void:
-	var datas = _get_data()
+	var datas = Global.get_data()
 	var num_of_vbox = vboxes.size()
 	var count = 0
 	for data in datas.values():
