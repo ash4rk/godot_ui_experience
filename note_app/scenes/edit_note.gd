@@ -41,3 +41,5 @@ func _on_popup_confirmed():
 func _on_visibility_changed():
 	if visible:
 		_set_up()
+		content.grab_focus()
+		content.set_caret_column(len(content.text))
