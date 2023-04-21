@@ -2,6 +2,7 @@ extends Control
 
 var card = preload("res://scenes/card.tscn")
 @onready var hbox = $VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer
+@onready var search_line_edit = $VBoxContainer/Header/HBoxContainer/SearchLineEdit
 
 func _ready() -> void:
 	var vboxes = create_vboxes()
@@ -12,6 +13,10 @@ func _set_up(vboxes: Array) -> void:
 	var num_of_vbox = vboxes.size()
 	var count = 0
 	for data in datas.values():
+		if search_line_edit.text != "":
+			if search_line_edit.text not in data.title:
+				continue
+		
 		var card_item = card.instantiate()
 		card_item.set_up(data)
 		
@@ -47,3 +52,7 @@ func _on_visibility_changed():
 	if visible and hbox != null:
 		var vboxes = create_vboxes()
 		_set_up(vboxes)
+
+func _on_search_line_edit_text_changed(new_text):
+	var vboxes = create_vboxes()
+	_set_up(vboxes)

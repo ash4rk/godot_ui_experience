@@ -37,7 +37,7 @@ content_margin_right = 30.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqdjv"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kcoyx"]
 resource_local_to_scene = true
 content_margin_left = 20.0
 content_margin_top = 20.0
@@ -121,7 +121,7 @@ theme = ExtResource("1_lldtg")
 theme_override_font_sizes/font_size = 32
 text = "GNotes"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Header/HBoxContainer"]
+[node name="SearchLineEdit" type="LineEdit" parent="VBoxContainer/Header/HBoxContainer"]
 custom_minimum_size = Vector2(493, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lo3ju")
@@ -155,7 +155,7 @@ layout_mode = 2
 
 [node name="Card" parent="VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_0hb0s")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_jqdjv")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kcoyx")
 
 [node name="NewNoteButton" type="Button" parent="."]
 layout_mode = 1
@@ -187,4 +187,5 @@ expand_icon = true
 
 [connection signal="resized" from="." to="." method="_on_resized"]
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="text_changed" from="VBoxContainer/Header/HBoxContainer/SearchLineEdit" to="." method="_on_search_line_edit_text_changed"]
 [connection signal="pressed" from="NewNoteButton" to="." method="_on_new_note_button_pressed"]
