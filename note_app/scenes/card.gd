@@ -14,5 +14,8 @@ func set_up(data):
 	id = data.id
 
 func _on_gui_input(event):
-	if event is InputEventMouseButton and event.is_pressed() and event.get_button_index() == 1:
-		Global.set_path("/read/" + id)
+	if event is InputEventMouseButton and event.is_pressed():
+		if event.get_button_index() == 1:
+			Global.set_path("/read/" + id)
+		elif event.get_button_index() == 2:
+			Global.set_path("/delete/" + id)
