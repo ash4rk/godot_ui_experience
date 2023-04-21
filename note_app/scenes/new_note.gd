@@ -72,6 +72,7 @@ func _on_save_button_pressed() -> void:
 	file.store_line(json_string_new)
 	file.close()
 	Global.go_back()
+	Global.NOTIFICATION.show_notif("Created note " + "\"" + data[id].title + "\"")
 
 func _on_confirmation_dialog_canceled():
 	$Popup.visible = false

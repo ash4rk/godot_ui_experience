@@ -24,6 +24,7 @@ func _on_save_button_pressed():
 	file.store_line(json_string_new)
 	file.close()
 	Global.go_back()
+	Global.NOTIFICATION.show_notif("Note \"" + data[id].title + "\" has been edited")
 
 func _on_back_button_pressed():
 	if old_data.title != title.text or old_data.content != content.text:

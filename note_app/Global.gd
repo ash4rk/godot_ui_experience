@@ -11,6 +11,7 @@ const COLORS = {
 			"#a2d9ce", "#f9e79f", "#f5cba7", "#f7f9f9", "#abebc6"]
 }
 
+@onready var NOTIFICATION = get_node("/root/Control/NotificationArea")
 var PATH: String = "/"
 var LAST_PATH: String = "/"
 var SAVE_FILE_PATH: String = "user://gnotes_data.json"

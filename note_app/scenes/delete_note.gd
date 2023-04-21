@@ -14,6 +14,7 @@ func _on_confirmed():
 	#TODO(): Remove when custom popup delete is ipmlemented
 	$"../Home"._ready()
 	Global.go_back()
+	Global.NOTIFICATION.show_notif("Note deleted")
 
 func _on_canceled():
 	Global.go_back()
