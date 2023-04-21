@@ -37,7 +37,7 @@ content_margin_right = 30.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sml7"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqdjv"]
 resource_local_to_scene = true
 content_margin_left = 20.0
 content_margin_top = 20.0
@@ -107,9 +107,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 15.0
-offset_top = 3.0
-offset_right = -13.0
+offset_left = 19.0
+offset_top = 13.0
+offset_right = -20.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -122,7 +122,7 @@ theme_override_font_sizes/font_size = 32
 text = "GNotes"
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/Header/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(493, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lo3ju")
 theme_override_styles/normal = SubResource("StyleBoxFlat_d86ww")
@@ -155,7 +155,7 @@ layout_mode = 2
 
 [node name="Card" parent="VBoxContainer/PanelContainer/ScrollContainer/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_0hb0s")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_5sml7")
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqdjv")
 
 [node name="NewNoteButton" type="Button" parent="."]
 layout_mode = 1
