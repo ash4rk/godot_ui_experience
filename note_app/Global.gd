@@ -13,6 +13,7 @@ const COLORS = {
 
 var PATH: String = "/"
 var LAST_PATH: String = "/"
+var SAVE_FILE_PATH: String = "user://gnotes_data.json"
 
 func go_back() -> void:
 	PATH = LAST_PATH
@@ -22,14 +23,17 @@ func set_path(path) -> void:
 	PATH = path
 
 func get_data() -> Dictionary:
-	var file = FileAccess.open("res://data.json", FileAccess.READ_WRITE)
+	var file = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ_WRITE)
+	if not FileAccess.file_exists(SAVE_FILE_PATH):
+		file = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	
 	#parse it to check for errors
 	var json = JSON.new()
 	var _parse_result = json.parse(file.get_as_text())
 	
 	var data: Dictionary
 	if json.get_data() == null:
-		data = {}
+		return {}
 	else:
 		data = json.get_data()
 

@@ -53,7 +53,7 @@ func _on_save_button_pressed() -> void:
 	}
 	
 	#open the file 
-	var file = FileAccess.open("res://data.json", FileAccess.READ_WRITE)
+	var file = FileAccess.open(Global.SAVE_FILE_PATH, FileAccess.READ_WRITE)
 	#parse it to check for errors
 	var json = JSON.new()
 	var _parse_result = json.parse(file.get_as_text())
