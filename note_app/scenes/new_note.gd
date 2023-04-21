@@ -39,6 +39,7 @@ func _on_back_button_pressed():
 
 func _on_save_button_pressed() -> void:
 	var unix_time: float = Time.get_unix_time_from_system()
+	@warning_ignore("narrowing_conversion")
 	var dates = Time.get_datetime_dict_from_unix_time(unix_time)
 	var note = {
 		"title": title.text,

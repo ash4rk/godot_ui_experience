@@ -7,7 +7,6 @@ func _on_confirmed():
 	var file = FileAccess.open(Global.SAVE_FILE_PATH, FileAccess.WRITE)
 	if data.has(id_to_delete):
 		data.erase(id_to_delete)
-	var json = JSON.new()
 	var json_string_new = JSON.stringify(data, "\t")
 	file.store_line(json_string_new)
 	file.close()

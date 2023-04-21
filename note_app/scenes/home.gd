@@ -53,6 +53,6 @@ func _on_visibility_changed():
 		var vboxes = create_vboxes()
 		_set_up(vboxes)
 
-func _on_search_line_edit_text_changed(new_text):
+func _on_search_line_edit_text_changed(_new_text):
 	var vboxes = create_vboxes()
 	_set_up(vboxes)
