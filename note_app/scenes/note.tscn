@@ -154,6 +154,7 @@ theme_override_fonts/font = ExtResource("4_mxrhg")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_dgpag")
 text = "Title here"
+autowrap_mode = 3
 
 [node name="ContentLabel" type="Label" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -163,6 +164,7 @@ theme_override_fonts/font = ExtResource("5_gnjyn")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_glthv")
 text = "Content here"
+autowrap_mode = 3
 
 [node name="Control2" type="Control" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)

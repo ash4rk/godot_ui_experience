@@ -176,6 +176,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_glthv")
 theme_override_styles/focus = SubResource("StyleBoxFlat_6m0br")
 theme_override_styles/read_only = SubResource("StyleBoxFlat_3n2sg")
 placeholder_text = "Type something here..."
+wrap_mode = 1
 caret_blink = true
 
 [node name="Control2" type="Control" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer"]
