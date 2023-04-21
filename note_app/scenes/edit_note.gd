@@ -31,15 +31,15 @@ func _on_back_button_pressed():
 		$Popup.visible = true
 	else:
 		Global.go_back()
-
-func _on_popup_canceled():
-	$Popup.visible = false
-
-func _on_popup_confirmed():
-	Global.go_back()
-
+		
 func _on_visibility_changed():
 	if visible:
 		_set_up()
 		content.grab_focus()
 		content.set_caret_column(len(content.text))
+
+func _on_leave_button_pressed():
+	Global.go_back()
+
+func _on_cancel_button_pressed():
+	$Popup.visible = false

@@ -75,8 +75,9 @@ func _on_save_button_pressed() -> void:
 	Global.go_back()
 	Global.NOTIFICATION.show_notif("Created note " + "\"" + data[id].title + "\"")
 
-func _on_confirmation_dialog_canceled():
+func _on_cancel_button_pressed():
 	$Popup.visible = false
 
-func _on_confirmation_dialog_confirmed():
+
+func _on_leave_button_pressed():
 	Global.go_back()

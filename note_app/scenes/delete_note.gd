@@ -1,7 +1,9 @@
-extends ConfirmationDialog
+extends ColorRect
 
+func _on_cancel_button_pressed():
+	Global.go_back()
 
-func _on_confirmed():
+func _on_delete_button_pressed():
 	var id_to_delete = Global.PATH.trim_prefix("/delete/")
 	var data = Global.get_data()
 	var file = FileAccess.open(Global.SAVE_FILE_PATH, FileAccess.WRITE)
@@ -14,6 +16,3 @@ func _on_confirmed():
 	$"../Home"._ready()
 	Global.go_back()
 	Global.NOTIFICATION.show_notif("Note deleted")
-
-func _on_canceled():
-	Global.go_back()

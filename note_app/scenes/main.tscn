@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c2v867nje32v7"]
+[gd_scene load_steps=16 format=3 uid="uid://c2v867nje32v7"]
 
 [ext_resource type="Script" path="res://scenes/Pages.gd" id="1_qnuft"]
 [ext_resource type="PackedScene" uid="uid://bdo3c05cilaf2" path="res://scenes/home.tscn" id="1_scala"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bvanfa8gk6xx6" path="res://scenes/edit_note.tscn" id="5_cfaop"]
 [ext_resource type="Theme" uid="uid://dq7rs7x41380r" path="res://main_theme.tres" id="6_gkbpj"]
 [ext_resource type="Script" path="res://scenes/delete_note.gd" id="7_qanus"]
+[ext_resource type="FontFile" uid="uid://b46o6a82pckne" path="res://fonts/ComicNeue-Bold.ttf" id="8_bluey"]
 [ext_resource type="Script" path="res://scenes/notification.gd" id="8_d4el5"]
+[ext_resource type="FontFile" uid="uid://dktjy0vnlqres" path="res://fonts/ComicNeue-Regular.ttf" id="9_f8o7w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wedgo"]
 content_margin_left = 12.0
@@ -106,13 +108,71 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="DeleteNote" type="ConfirmationDialog" parent="Pages"]
-position = Vector2i(410, 274)
-size = Vector2i(284, 99)
-theme = ExtResource("6_gkbpj")
-ok_button_text = "Delete"
-dialog_text = "Delete this note?"
+[node name="DeleteNote" type="ColorRect" parent="Pages"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.627451)
 script = ExtResource("7_qanus")
+
+[node name="Panel" type="PanelContainer" parent="Pages/DeleteNote"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("6_gkbpj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pages/DeleteNote/Panel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pages/DeleteNote/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Pages/DeleteNote/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_bluey")
+theme_override_font_sizes/font_size = 20
+text = "Delete note"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Pages/DeleteNote/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_f8o7w")
+theme_override_font_sizes/font_size = 13
+text = "Are you shure want to delete this note?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pages/DeleteNote/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 66
+
+[node name="CancelButton" type="Button" parent="Pages/DeleteNote/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Cancel"
+
+[node name="LeaveButton" type="Button" parent="Pages/DeleteNote/Panel/VBoxContainer/HBoxContainer"]
+modulate = Color(0.937255, 0.423529, 0.454902, 1)
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "Delete"
 
 [node name="NotificationArea" type="Control" parent="."]
 layout_mode = 1
@@ -160,6 +220,6 @@ libraries = {
 "": SubResource("AnimationLibrary_w2c3k")
 }
 
-[connection signal="canceled" from="Pages/DeleteNote" to="Pages/DeleteNote" method="_on_canceled"]
-[connection signal="confirmed" from="Pages/DeleteNote" to="Pages/DeleteNote" method="_on_confirmed"]
+[connection signal="pressed" from="Pages/DeleteNote/Panel/VBoxContainer/HBoxContainer/CancelButton" to="Pages/DeleteNote" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Pages/DeleteNote/Panel/VBoxContainer/HBoxContainer/LeaveButton" to="Pages/DeleteNote" method="_on_delete_button_pressed"]
 [connection signal="pressed" from="NotificationArea/PanelContainer/HBoxContainer/CloseNotifButton" to="NotificationArea" method="_on_close_notif_button_pressed"]
