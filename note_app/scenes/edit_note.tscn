@@ -1,40 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://oh53ev660wjt"]
+[gd_scene load_steps=12 format=3 uid="uid://bvanfa8gk6xx6"]
 
-[ext_resource type="Theme" uid="uid://dq7rs7x41380r" path="res://main_theme.tres" id="2_6yal5"]
-[ext_resource type="Texture2D" uid="uid://bqmqab07ag8xr" path="res://icons/left_arrow_icon.png" id="3_wogiv"]
-[ext_resource type="FontFile" uid="uid://b46o6a82pckne" path="res://fonts/ComicNeue-Bold.ttf" id="4_mxrhg"]
-[ext_resource type="FontFile" uid="uid://dktjy0vnlqres" path="res://fonts/ComicNeue-Regular.ttf" id="5_gnjyn"]
-
-[sub_resource type="GDScript" id="GDScript_kgeot"]
-script/source = "extends Control
-
-@onready var title = $VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer/TitleLabel
-@onready var content = $VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer/ContentLabel
-
-func _ready():
-	pass # Replace with function body.
-
-func _set_up(data):
-	var card_data = data[Global.PATH.trim_prefix(\"/read/\")]
-	title.text = card_data.title
-	content.text = card_data.content
-
-func _on_back_button_pressed():
-	Global.go_back()
-
-func _on_edit_button_pressed():
-	var data = Global.get_data()
-	var card_data = data[Global.PATH.trim_prefix(\"/read/\")]
-	$\"../EditNote\".old_data = card_data
-	Global.set_path(\"/edit/\"+ card_data.id)
-	Global.LAST_PATH = '/'
-
-func _on_visibility_changed():
-	if self.visible:
-		_set_up(Global.get_data())
-"
+[ext_resource type="Script" path="res://scenes/edit_note.gd" id="1_0v1xf"]
+[ext_resource type="Theme" uid="uid://dq7rs7x41380r" path="res://main_theme.tres" id="2_y2ud1"]
+[ext_resource type="Texture2D" uid="uid://bqmqab07ag8xr" path="res://icons/left_arrow_icon.png" id="3_dipks"]
+[ext_resource type="FontFile" uid="uid://b46o6a82pckne" path="res://fonts/ComicNeue-Bold.ttf" id="4_b4v0p"]
+[ext_resource type="FontFile" uid="uid://dktjy0vnlqres" path="res://fonts/ComicNeue-Regular.ttf" id="5_vvml3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dgpag"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pq15t"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_15ram"]
 content_margin_left = 25.0
 content_margin_top = 10.0
 content_margin_right = 25.0
@@ -48,14 +34,28 @@ content_margin_right = 25.0
 content_margin_bottom = 10.0
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="Note" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6m0br"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3n2sg"]
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="EditNote" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_kgeot")
+script = ExtResource("1_0v1xf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -79,7 +79,7 @@ offset_left = 12.0
 offset_right = -12.0
 offset_bottom = 60.0
 grow_horizontal = 2
-theme = ExtResource("2_6yal5")
+theme = ExtResource("2_y2ud1")
 
 [node name="BackButton" type="Button" parent="VBoxContainer/Control/Control"]
 layout_mode = 1
@@ -92,10 +92,10 @@ offset_bottom = 22.5
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 text = "Back"
-icon = ExtResource("3_wogiv")
+icon = ExtResource("3_dipks")
 expand_icon = true
 
-[node name="EditButton" type="Button" parent="VBoxContainer/Control/Control"]
+[node name="SaveButton" type="Button" parent="VBoxContainer/Control/Control"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -108,7 +108,8 @@ offset_bottom = 23.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_default_cursor_shape = 2
-text = "Edit"
+text = "Save
+"
 
 [node name="Control2" type="Control" parent="VBoxContainer"]
 layout_mode = 2
@@ -147,27 +148,42 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TitleLabel" type="Label" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer"]
+[node name="TitleLineEdit" type="LineEdit" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6yal5")
-theme_override_fonts/font = ExtResource("4_mxrhg")
+theme_override_fonts/font = ExtResource("4_b4v0p")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_dgpag")
-text = "Title here"
+theme_override_styles/focus = SubResource("StyleBoxFlat_pq15t")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_15ram")
+placeholder_text = "Title"
+clear_button_enabled = true
+caret_blink = true
 
-[node name="ContentLabel" type="Label" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer"]
+[node name="ContentTextEdit" type="TextEdit" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = ExtResource("2_6yal5")
-theme_override_fonts/font = ExtResource("5_gnjyn")
+theme_override_fonts/font = ExtResource("5_vvml3")
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxFlat_glthv")
-text = "Content here"
+theme_override_styles/focus = SubResource("StyleBoxFlat_6m0br")
+theme_override_styles/read_only = SubResource("StyleBoxFlat_3n2sg")
+placeholder_text = "Type something here..."
+caret_blink = true
 
 [node name="Control2" type="Control" parent="VBoxContainer/Control2/ScrollContainer/VBoxContainer/Control/HBoxContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
+[node name="Popup" type="ConfirmationDialog" parent="."]
+title = "Unsaved note"
+position = Vector2i(319, 220)
+size = Vector2i(389, 130)
+theme = ExtResource("2_y2ud1")
+dialog_text = "You have not saved the note.
+Do you want to leave without saving?"
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="VBoxContainer/Control/Control/BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/Control/Control/EditButton" to="." method="_on_edit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/Control/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="canceled" from="Popup" to="." method="_on_popup_canceled"]
+[connection signal="confirmed" from="Popup" to="." method="_on_popup_confirmed"]
